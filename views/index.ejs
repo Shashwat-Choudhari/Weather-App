@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather</title>
+    <link rel="stylesheet" href="/CSS/styles.css">
+</head>
+<body>
+    <%- include("header.ejs") %>
+    <div class="outer">
+        <div class="main">
+            <form action="/search" method="post">
+                <div class="request">
+                    <div>
+                        <input type="text" id="latitude" class="request-inputs" placeholder="Latitude" name="latitude">
+                    </div>
+                    <div>
+                        <input type="text" id="longitude" class="request-inputs" placeholder="Longitude" name="longitude">
+                    </div>
+                    <div>
+                        <input type="submit" class="request-inputs" id="search" value="Search"  >
+                    </div>
+                </div>
+            </form>
+            <% if(locals.Timezone && locals.time && locals.temp && locals.is_day && locals.weather && locals.wind_speed && locals.precipitation && locals.humidity && locals.forecast_times && locals.forecast_weather && locals.maxTemps && locals.minTemps){ %> 
+                <% var weather_type;
+                if(weather>=0 && weather<=3 )
+                {
+                    weather_type = "Clear";
+                }
+                else if(weather==45 || weather==48)
+                {
+                    weather_type = "Fog";
+                }
+                else if(weather>=51 && weather<=67)
+                {
+                    weather_type = "Rain";    
+                }
+                else if(weather>=71 &&weather<=77)
+                {
+                    weather_type= "Snow";
+                }
+                else if(weather>=80 && weather<=82)
+                {
+                    weather_type = "Rain";
+                }
+                else if(weather==85 || weather==86)
+                {
+                    weather_type = "Rain";
+                }
+                else if(weather>=95 && weather<=99)
+                {
+                    weather_type = "Thunderstorm";
+                } %>
+                <% var dn;
+                if(is_day==1)
+                {
+                    dn = "Day";
+                }
+                else if(is_day==0)
+                {
+                    dn = "Night";
+                } %>
+                <div class="current">
+                    <% var imgaddress = dn + "_" + weather_type + ".png" %>
+                    <img src=<%= imgaddress %> alt=<%= dn + " " + weather_type %>>
+                    <div class="inner">
+                        <p>Temperature: <%= temp %>°C</p>
+                        <p>Relative Humidity: <%= humidity %></p>
+                        <% if(weather_type=="Rain" || weather_type=="Snow" || weather_type=="Hail"){ %>
+                            <p>Precipitation: <%= precipitation %></p>
+                        <% } %>
+                        <p>Wind Speed: <%= wind_speed %> km/hr</p>
+                        <p><strong><%= weather_type %> <%= dn %></strong></p>
+                    </div>
+                </div>
+                <h2>Forecast</h2>
+                <% var weather_types = [];
+                var imgaddresses = [];
+                for(var i=0;i<3;i++)
+                {
+                    if(forecast_weather[i]>=0 && forecast_weather[i]<=3 )
+                    {
+                        weather_types.push("Clear");
+                    }
+                    else if(forecast_weather[i]==45 || forecast_weather[i]==48)
+                    {
+                        weather_types.push("Fog");
+                    }
+                    else if(forecast_weather[i]>=51 && forecast_weather[i]<=67)
+                    {
+                        weather_types.push("Rain");    
+                    }
+                    else if(forecast_weather[i]>=71 && forecast_weather[i]<=77)
+                    {
+                        weather_types.push("Snow");
+                    }
+                    else if(forecast_weather[i]>=80 && forecast_weather[i]<=82)
+                    {
+                        weather_types.push("Rain");
+                    }
+                    else if(forecast_weather[i]==85 || forecast_weather[i]==86)
+                    {
+                        weather_types.push("Rain");
+                    }
+                    else if(forecast_weather[i]>=95 && forecast_weather[i]<=99)
+                    {
+                        weather_types.push("Thunderstorm");
+                    }
+                    imgaddresses.push("Day_"+weather_types[i]+".png")
+                } %>
+                <div class="forecast">
+                    <div class="day">
+                        <img src= <%= imgaddresses[0] %> alt="">
+                        <p><strong><%= weather_types[0] %></strong></p>
+                        <p>Date: <%= forecast_times[0] %></p>
+                        <p>Max Temp: <%= maxTemps[0] %>°C</p>
+                        <p>Min Temp: <%= minTemps[0] %>°C</p>
+                    </div>
+                    <div class="day">
+                        <img src= <%= imgaddresses[1] %> alt="">
+                        <p><strong><%= weather_types[1] %></strong></p>
+                        <p>Date: <%= forecast_times[1] %></p>
+                        <p>Max Temp: <%= maxTemps[1] %>°C</p>
+                        <p>Min Temp: <%= minTemps[1] %>°C</p>
+                    </div>
+                    <div class="day">
+                        <img src= <%= imgaddresses[2] %> alt="">
+                        <p><strong><%= weather_types[2] %></strong></p>
+                        <p>Date: <%= forecast_times[2] %></p>
+                        <p>Max Temp: <%= maxTemps[2] %>°C</p>
+                        <p>Min Temp: <%= minTemps[2] %>°C</p>
+                    </div>
+               </div>
+            <% } %>
+            
+     
+            
+ 
+        </div>
+    </div>
+
+
+    
+</body>
+</html>

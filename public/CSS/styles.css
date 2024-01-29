@@ -1,0 +1,157 @@
+body{
+    background-color: #F1F6F9;
+    /* background-image: url(background.jpg); */
+    
+}
+
+.header{
+    background-color: #212A3E;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    
+    margin: 0px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 0px;
+    padding-right: 0px;
+    box-shadow: 0px 2px 2px;
+}
+.header p
+{
+    color: white;
+    /* font-family: 'Quicksand', sans-serif; */
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: lighter;
+    font-size: 20px;
+    margin: 0px;
+}
+.header img{
+    size: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+    background-color: white;
+    border-radius: 5px;
+}
+hr{
+    margin: 5px 0px 10px 0px;
+    margin-bottom: 30px;
+}
+
+.outer{
+    display: flex;
+    flex-direction: row;
+    height: 80vh;
+    align-items: center;
+    justify-content: center;
+}
+
+.main{
+    width: 50%;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 3%;
+    box-shadow: 0px 1px 6px;
+}
+
+.request{
+    display: flex;
+    flex-direction: row;
+}
+
+
+
+.request-inputs{
+    height: 30px;
+    border: none;
+    margin: 0px;
+    font-size: 15px;
+    
+}
+
+#latitude{
+    border-left: double black 3px;
+    border-top: double black 3px;
+    border-bottom: double black 3px;
+    border-right: double black 3px;
+    padding: 5px;
+}
+
+#longitude{
+    border-right: double black 3px;
+    border-top: double black 3px;
+    border-bottom: double black 3px;
+    padding: 5px;
+}
+
+#search{
+    height: 45px;
+    padding: 5px;
+    width: 100px;
+    margin: 0px;
+    background-color: #65B741;
+    border: solid black 1px;
+    border-left: none;
+    color: white;    
+}
+
+.current{
+    display: flex;
+    flex-direction: row;  
+    justify-content: center;
+    width: 100%;
+      
+}
+
+.current img{
+    height: 120px;
+    width: 120px;
+    margin: 30px;
+}
+
+.inner{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+}
+
+.inner p{
+    font-family: 'Rajdhani', sans-serif;
+    margin: 0px;
+}
+
+h2{
+    font-family: 'Rajdhani', sans-serif;
+    margin: 0px;
+    margin-bottom: 10px;
+}
+
+.forecast{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+}
+
+.day{
+    flex: 2;  
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center ;
+}
+
+.day p{
+    font-family: 'Rajdhani', sans-serif;
+    text-align: center;
+    margin: 0px;
+}
+
+.day img{
+    height: 50px;
+    width: 50px;
+    align-self: center;
+}
